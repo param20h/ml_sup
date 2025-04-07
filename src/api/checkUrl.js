@@ -33,11 +33,11 @@ export const checkUrl = async (url) => {
   if (suspiciousUrls[url]) {
     return suspiciousUrls[url];
   }
-
-  // Otherwise fallback to actual API call or mock data
+  
+  // Otherwise fallback to mock "safe" data with random confidence
   return {
     suspicious: false,
-    confidence: 12,
+    confidence: Math.floor(Math.random() * 100) + 1, // Random between 1-100
     tags: []
   };
-};
+}
