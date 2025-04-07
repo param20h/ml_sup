@@ -9,7 +9,6 @@ const InputForm = ({ setResult }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [loading, setLoading] = React.useState(false);
 
-
   const onSubmit = async (data) => {
     toast.info("Checking URL, hang tight...");
     setLoading(true);
@@ -26,12 +25,12 @@ const InputForm = ({ setResult }) => {
       setLoading(false);
     }
   };
+
   const saveToLocalStorage = (url, result) => {
     const history = JSON.parse(localStorage.getItem('urlHistory')) || [];
     history.unshift({ url, result, time: new Date().toISOString() });
     localStorage.setItem('urlHistory', JSON.stringify(history.slice(0, 10)));
   };
-  
 
   return (
     <motion.form
@@ -50,11 +49,10 @@ const InputForm = ({ setResult }) => {
       {errors.url && <p className={styles.error}>Enter a valid URL.</p>}
 
       {loading ? (
-  <div className={styles.spinner}></div>
-) : (
-  <button type="submit" className={styles.button}>Check Now</button>
-)}
-
+        <div className={styles.spinner}></div>
+      ) : (
+        <button type="submit" className={styles.button}>Check Now</button>
+      )}
     </motion.form>
   );
 };
