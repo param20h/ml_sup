@@ -27,7 +27,18 @@ export const checkUrl = async (url) => {
       suspicious: true,
       confidence: 91,
       tags: ["Phishing"]
+    },
+    "https://lpus.in": {
+      suspicious: true,
+      confidence: 100,
+      tags: ["Phishing"]
+    },
+    "https://update-your-bank-details.ru": {
+      suspicious: true,
+      confidence: 98,
+      tags: ["Phishing"]
     }
+    
   };
 
   if (suspiciousUrls[url]) {
